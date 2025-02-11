@@ -1,9 +1,12 @@
 name: Push Workflow
 
 on:
-  push:
+  pull_request:
     branches-ignore:
       - main  # Runs only on non-main branches
+    types:
+      - opened       # When a new PR is opened
+      - synchronize  # When a new commit is pushed to the PR branch
 
 jobs:
   pre-commit:
