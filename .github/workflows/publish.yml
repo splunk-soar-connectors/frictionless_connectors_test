@@ -1,23 +1,22 @@
-name: Publish
+name: Publish Workflow
 
 on:
   push:
     branches:
-      - main  # Runs only when code is pushed (merged) to main
+      - main  # Runs only on push (merge) to main
 
 jobs:
   publish:
-    name: Publish
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: pip
+
+      - name: Check out app repo
         uses: actions/checkout@v4
 
-      - name: Print Merge Confirmation
-        run: echo "Code merged to main! Running post-merge actions..."
-
-      - name: Publishing
-        run: |
-          echo "Publishing application..."
-
+      - name: Publish
+        uses: ./.github/actions/publish
