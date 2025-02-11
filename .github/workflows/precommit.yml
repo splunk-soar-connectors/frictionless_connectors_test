@@ -1,0 +1,21 @@
+name: Precommit
+
+on:
+  push:
+    branches-ignore:
+      - main  # Runs only on non-main branches
+
+jobs:
+  linting:
+    name: Run Precommit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Ls
+        run: ls
+      - name: Pwd
+        run: pwd
+      - name: Run Precommit
+        run: |
+          echo "Running Precommit..."

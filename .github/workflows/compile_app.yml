@@ -1,0 +1,21 @@
+name: Compile App
+
+on:
+  workflow_run:
+    workflows: ["Precommit"]
+    types:
+      - completed
+
+
+jobs:
+  build_app:
+    name: Compile App
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Compile App
+        run: |
+          echo "Compiling the App..."
