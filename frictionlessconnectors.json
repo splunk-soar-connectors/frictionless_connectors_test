@@ -28,7 +28,7 @@
             "order": 0
         },
         "region": {
-            "description": "Region your Cisco Security Cloud Control is deployed on",
+            "description": "Region your Cisco Security Cloud Control is deployed in",
             "data_type": "string",
             "value_list": [
                 "US",
