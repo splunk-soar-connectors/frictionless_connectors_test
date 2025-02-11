@@ -15,7 +15,7 @@ This table lists the configuration variables required to operate Frictionless Co
 VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
 **api_key** | optional | password | Api key for cloud delivered FMC |
-**region** | optional | string | Region your Cisco Security Cloud Control is deployed in |
+**region** | optional | string | Region your Cisco Security Cloud Control is deployed on |
 
 ### Supported Actions
 
