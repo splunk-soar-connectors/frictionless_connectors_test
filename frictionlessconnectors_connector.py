@@ -323,7 +323,6 @@ class FP_Connector(BaseConnector):
                     return action_result.get_status()
 
         action_result.update_summary({"total_objects_returned": len(action_result.get_data())})
-        self.save_progress("test")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def handle_action(self, param: dict[str, Any]) -> bool:
