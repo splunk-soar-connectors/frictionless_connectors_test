@@ -29,8 +29,8 @@ from frictionlessconnectors_consts import (
     GET_HOSTS_ENDPOINT,
     HEADERS,
     NETWORK_OBJECTS_ENDPOINT,
-    STATE_FILE_CORRUPT_ERR,
     OBJECT_TYPES,
+    STATE_FILE_CORRUPT_ERR,
 )
 
 
@@ -208,9 +208,7 @@ class FP_Connector(BaseConnector):
             self.headers.update({"Content-type": "application/json"})
 
         try:
-            result = request_method(
-                url, headers=self.headers, json=json_body, params=params, timeout=DEFAULT_REQUEST_TIMEOUT
-            )
+            result = request_method(url, headers=self.headers, json=json_body, params=params, timeout=DEFAULT_REQUEST_TIMEOUT)
         except Exception as e:
             return action_result.set_status(phantom.APP_ERROR, "Error connecting to server. {}".format(str(e))), None
 
@@ -325,7 +323,7 @@ class FP_Connector(BaseConnector):
                     return action_result.get_status()
 
         action_result.update_summary({"total_objects_returned": len(action_result.get_data())})
-        return action_result.set_status(phantom.APP_SUCCESS) 
+        return action_result.set_status(phantom.APP_SUCCESS)
 
     def handle_action(self, param: dict[str, Any]) -> bool:
 
