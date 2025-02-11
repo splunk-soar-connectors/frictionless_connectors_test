@@ -1,0 +1,20 @@
+name: Security Scans
+
+on:
+  workflow_run:
+    workflows: ["Build App", "Compile App"]
+    types:
+      - completed
+
+jobs:
+  security_scans:
+    name: Security Scans
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Security Scans
+        run: |
+          echo "Running Security Scans..."

@@ -1,0 +1,20 @@
+name: Sanity Tests
+
+on:
+  workflow_run:
+    workflows: ["Build App", "Compile App"]
+    types:
+      - completed
+
+jobs:
+  sanity_tests:
+    name: Sanity Test
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Sanity Test
+        run: |
+          echo "Running Sanity Tests..."

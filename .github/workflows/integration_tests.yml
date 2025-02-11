@@ -1,0 +1,20 @@
+name: Integration Tests
+
+on:
+  workflow_run:
+    workflows: ["Build App", "Compile App"]
+    types:
+      - completed
+
+jobs:
+  integration_tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Integration Tests
+        run: |
+          echo "Running Integration Tests..."
