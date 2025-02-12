@@ -1,4 +1,4 @@
-# File: ciscosecurefirewall_connector.py
+# File: frictionlessconnectors_connector.py
 #
 # Copyright (c) 2025 Splunk Inc.
 #

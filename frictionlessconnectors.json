@@ -4,9 +4,9 @@
     "description": "To test changes to CI/CD. using cisco secure firewalls actions",
     "type": "information",
     "product_vendor": "Splunk",
-    "logo": "ciscotalosintelligence.svg",
-    "logo_dark": "ciscotalosintelligence_dark.svg",
-    "product_name": "Frictionless Tests",
+    "logo": "logo_cisco.svg",
+    "logo_dark": "logo_cisco_dark.svg",
+    "product_name": "Frictionless Connectors Test",
     "python_version": "3",
     "latest_tested_versions": [
         "Cloud, October 30, 2024"
@@ -19,7 +19,7 @@
     "package_name": "phantom_frictionlessconnectors",
     "fips_compliant": false,
     "main_module": "frictionlessconnectors_connector.py",
-    "min_phantom_version": "6.3.1",
+    "min_phantom_version": "6.3.0",
     "app_wizard_version": "1.0.1",
     "configuration": {
         "api_key": {

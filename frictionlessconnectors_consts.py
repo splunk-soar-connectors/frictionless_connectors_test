@@ -1,4 +1,4 @@
-# File: ciscosecurefirewall_consts.py
+# File: frictionlessconnectors_consts.py
 #
 # Copyright (c) 2025 Splunk Inc.
 #
