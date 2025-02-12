@@ -1,6 +1,7 @@
-<<<<<<< HEAD
 .vscode/
-=======
-*/.DS_Store
-
->>>>>>> 9728f6e (Add gitignore)
+.DS_Store
+*.pyc
+build/
+dist/
+.tox/
+.Python
