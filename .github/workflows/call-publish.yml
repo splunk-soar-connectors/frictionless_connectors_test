@@ -1,4 +1,4 @@
-name: Publish Workflow
+name: Call Publish Workflow
 
 on:
   push:
