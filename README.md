@@ -3,14 +3,14 @@
 Publisher: Splunk \
 Connector Version: 1.0.6 \
 Product Vendor: Splunk \
-Product Name: Frictionless Tests \
-Minimum Product Version: 6.3.1
+Product Name: Frictionless Connectors Test \
+Minimum Product Version: 6.3.0
 
 To test changes to CI/CD. using cisco secure firewalls actions
 
 ### Configuration variables
 
-This table lists the configuration variables required to operate Frictionless Connectors Test. These variables are specified when configuring a Frictionless Tests asset in Splunk SOAR.
+This table lists the configuration variables required to operate Frictionless Connectors Test. These variables are specified when configuring a Frictionless Connectors Test asset in Splunk SOAR.
 
 VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
