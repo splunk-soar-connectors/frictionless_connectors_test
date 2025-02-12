@@ -69,16 +69,15 @@ jobs:
         uses: ./.github/actions/sanity-tests
 
   integration-test:
-    runs-on: ubuntu-latest # This will be Codebuild
+    runs-on: codebuild-integration-tests-${{ github.run_id }}-${{ github.run_attempt }}
     needs: [build, compile]
+    env:
+      APP_REPO: ${{ github.event.repository.name }}
     steps:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.9'
-
-      - name: Check out app repo
-        uses: actions/checkout@v4
 
       - name: Run Integration Tests
         uses: ./.github/actions/integration-tests
