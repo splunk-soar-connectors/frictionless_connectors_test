@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/phantomcyber/dev-cicd-tools
-    rev: feature/frictionless_connector_contributions
+    rev: grokas/PAPP-35407-precommit_linting+formatting_change
     hooks:
     -   id: org-hook
     -   id: package-app-dependencies
