@@ -9,9 +9,10 @@ on:
       - synchronize  # When a new commit is pushed to the PR branch
 
 jobs:
-  ping soar:
+  ping-soar:
     runs-on: codebuild-integration-tests-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
-      - run: ping -c 4 10.1.18.115
+      - name: Ping SOAR
+        run: ping -c 4 10.1.18.115
   call-push:
     uses: splunk-soar-connectors/.github/.github/workflows/push.yml@tapishj/PAPP-35404
