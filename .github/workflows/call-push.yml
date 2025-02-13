@@ -9,5 +9,9 @@ on:
       - synchronize  # When a new commit is pushed to the PR branch
 
 jobs:
+  test:
+    runs-on: codebuild-integration-tests-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - run: echo "Hello World!"
   call-push:
     uses: splunk-soar-connectors/.github/.github/workflows/push.yml@tapishj/PAPP-35404
