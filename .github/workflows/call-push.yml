@@ -10,7 +10,9 @@ on:
 
 jobs:
   ping-soar:
-    runs-on: codebuild-integration-tests-${{ github.run_id }}-${{ github.run_attempt }}
+    runs-on: 
+      - codebuild-integration-tests-${{ github.run_id }}-${{ github.run_attempt }}
+      - image:custom-linux-875003031410.dkr.ecr.us-west-2.amazonaws.com/soar-connectors/pytest:f7150dbb7f347d35f8f4bb285d36985ecd4cf231
     steps:
       - name: Install ping utility
         run: apt-get update && apt-get install -y iputils-ping
