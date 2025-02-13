@@ -4,4 +4,8 @@
 build/
 dist/
 .tox/
+<<<<<<< HEAD
 .Python
+=======
+.Python
+>>>>>>> a5f3699 (Test commit)
