@@ -1,7 +1,7 @@
 .vscode/
 .DS_Store
+.Python
 *.pyc
 build/
 dist/
 .tox/
-.Python
