@@ -11,3 +11,5 @@ on:
 jobs:
   call-push:
     uses: splunk-soar-connectors/.github/.github/workflows/push.yml@mnordby/PAPP-35402
+    with:
+      phantom_password: ${{ secrets.PHANTOM_PASSWORD }}
