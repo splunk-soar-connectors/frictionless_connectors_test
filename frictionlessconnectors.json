@@ -17,9 +17,8 @@
     "app_version": "1.0.6",
     "utctime_updated": "2025-01-17T22:32:42.000000Z",
     "package_name": "phantom_frictionlessconnectors",
-    "fips_compliant": false,
     "main_module": "frictionlessconnectors_connector.py",
-    "min_phantom_version": "6.3.0",
+    "min_phantom_version": "6.2.0",
     "app_wizard_version": "1.0.1",
     "configuration": {
         "api_key": {
@@ -36,7 +35,7 @@
                 "APJ",
                 "AUS",
                 "IN"
-             ],
+            ],
             "order": 1
         }
     },
@@ -57,7 +56,7 @@
             "type": "investigate",
             "read_only": true,
             "identifier": "list_network_objects",
-            "parameters":{
+            "parameters": {
                 "name": {
                     "description": "Network object name to filter results by",
                     "data_type": "string",
@@ -67,16 +66,19 @@
                     "description": "Network object type to filter results by",
                     "data_type": "string",
                     "value_list": [
-                       "Host",
-                       "Network",
-                       "Range",
-                       "FQDN"
+                        "Host",
+                        "Network",
+                        "Range",
+                        "FQDN"
                     ],
                     "order": 1
                 },
                 "domain_name": {
                     "description": "Firepower Domain. If none is specified the default domain will be queried",
                     "data_type": "string",
+                    "contains": [
+                        "domain"
+                    ],
                     "order": 2
                 }
             },
@@ -100,10 +102,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.parameter.name",
-                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.parameter.type",
@@ -144,13 +142,17 @@
                 {
                     "data_path": "action_result.data.*.links.parent",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.random",
+                    "data_type": "string"
                 }
             ],
             "render": {
                 "title": "Network Objects",
                 "type": "table"
             },
-            "versions": "EQ(*)" 
+            "versions": "EQ(*)"
         }
     ]
 }

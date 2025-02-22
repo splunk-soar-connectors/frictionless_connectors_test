@@ -40,7 +40,6 @@ class RetVal(tuple):
 
 
 class FP_Connector(BaseConnector):
-
     def __init__(self):
         """
         Instance variables
@@ -121,7 +120,7 @@ class FP_Connector(BaseConnector):
         except:
             error_text = "Cannot parse error details"
 
-        message = "Status Code: {0}. Data from server:\n{1}\n".format(status_code, error_text)
+        message = f"Status Code: {status_code}. Data from server:\n{error_text}\n"
 
         message = message.replace("{", "{{").replace("}", "}}")
         return RetVal(action_result.set_status(phantom.APP_ERROR, message), None)
@@ -134,7 +133,7 @@ class FP_Connector(BaseConnector):
             return RetVal(
                 action_result.set_status(
                     phantom.APP_ERROR,
-                    "Unable to parse JSON response. Error: {0}".format(str(e)),
+                    f"Unable to parse JSON response. Error: {e!s}",
                 ),
                 None,
             )
@@ -148,7 +147,6 @@ class FP_Connector(BaseConnector):
         return RetVal(action_result.set_status(phantom.APP_ERROR, message), None)
 
     def _process_response(self, r: Response, action_result: ActionResult) -> RetVal:
-
         # store the r_text in debug data, it will get dumped in the logs if the action fails
         if hasattr(action_result, "add_debug_data"):
             action_result.add_debug_data({"r_status_code": r.status_code})
@@ -203,14 +201,14 @@ class FP_Connector(BaseConnector):
         response obtained by making an API call
         """
         request_method = getattr(requests, method)
-        url = "https://{0}{1}".format(self.firepower_host, endpoint)
+        url = f"https://{self.firepower_host}{endpoint}"
         if json_body:
             self.headers.update({"Content-type": "application/json"})
 
         try:
             result = request_method(url, headers=self.headers, json=json_body, params=params, timeout=DEFAULT_REQUEST_TIMEOUT)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Error connecting to server. {}".format(str(e))), None
+            return action_result.set_status(phantom.APP_ERROR, f"Error connecting to server. {e!s}"), None
 
         if not (200 <= result.status_code < 399):
             if result.status_code == 401 and first_try:
@@ -228,19 +226,14 @@ class FP_Connector(BaseConnector):
         return self._process_response(result, action_result)
 
     def _handle_test_connectivity(self, param: dict[str, Any]) -> bool:
-
         action_result = ActionResult(dict(param))
         self.add_action_result(action_result)
-
-        self.save_progress("Testing connectivity")
 
         url = GET_HOSTS_ENDPOINT.format(domain_id="default")
         ret_val, _ = self._make_rest_call("get", url, action_result)
         if phantom.is_fail(ret_val):
-            self.save_progress("Connectivity test failed")
             return action_result.get_status()
 
-        self.save_progress("Connectivity test passed")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def get_network_objects_of_type(self, object_type: str, domain_uuid: str, action_result: ActionResult, name: str = None) -> bool:
@@ -274,7 +267,7 @@ class FP_Connector(BaseConnector):
 
             except Exception as e:
                 message = "An error occurred while processing network objects"
-                self.debug_print(f"{message}. {str(e)}")
+                self.debug_print(f"{message}. {e!s}")
                 return action_result.set_status(phantom.APP_ERROR, str(e))
 
             if "paging" in response and "next" in response["paging"]:
@@ -327,7 +320,6 @@ class FP_Connector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def handle_action(self, param: dict[str, Any]) -> bool:
-
         ret_val = phantom.APP_SUCCESS
 
         # Get the action that we are supposed to execute for this App Run
@@ -344,7 +336,6 @@ class FP_Connector(BaseConnector):
 
 
 if __name__ == "__main__":
-
     import sys
 
     if len(sys.argv) < 2:
