@@ -150,7 +150,7 @@
                 "title": "Network Objects",
                 "type": "table"
             },
-            "versions": "EQ(*)" 
+            "versions": "EQ(*)"
         }
     ]
 }
