@@ -296,12 +296,10 @@ class FP_Connector(BaseConnector):
                 return domain["uuid"]
 
     def _handle_list_network_objects(self, param: dict[str, Any]) -> bool:
-        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
-
         action_result = self.add_action_result(ActionResult(dict(param)))
 
         domain_uuid = self.get_domain_id(param.get("domain_name"))
-        obj_type = param.get("type")
+        obj_type = param["type"]
         name = param.get("name")
 
         if obj_type:
@@ -316,7 +314,6 @@ class FP_Connector(BaseConnector):
                     return action_result.get_status()
 
         action_result.update_summary({"total_objects_returned": len(action_result.get_data())})
-        self.save_progress("test")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def handle_action(self, param: dict[str, Any]) -> bool:
