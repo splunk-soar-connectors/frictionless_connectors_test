@@ -295,11 +295,17 @@ class FP_Connector(BaseConnector):
             if domain_name.lower() == leaf_domain:
                 return domain["uuid"]
 
+    def random_func(self, param):
+        print(param["type"])
+
     def _handle_list_network_objects(self, param: dict[str, Any]) -> bool:
         action_result = self.add_action_result(ActionResult(dict(param)))
 
         domain_uuid = self.get_domain_id(param.get("domain_name"))
         obj_type = param["type"]
+        self.random_func(param)
+        param.pop("type")
+        param.pop("type", None)
         name = param.get("name")
 
         if obj_type:

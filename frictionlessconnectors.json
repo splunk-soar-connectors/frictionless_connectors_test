@@ -18,7 +18,7 @@
     "utctime_updated": "2025-01-17T22:32:42.000000Z",
     "package_name": "phantom_frictionlessconnectors",
     "main_module": "frictionlessconnectors_connector.py",
-    "min_phantom_version": "6.3.0",
+    "min_phantom_version": "6.2.0",
     "app_wizard_version": "1.0.1",
     "configuration": {
         "api_key": {
@@ -76,9 +76,6 @@
                 "domain_name": {
                     "description": "Firepower Domain. If none is specified the default domain will be queried",
                     "data_type": "string",
-                    "contains": [
-                        "domain"
-                    ],
                     "order": 2
                 }
             },
@@ -147,7 +144,7 @@
                     "data_type": "string"
                 },
                 {
-                    "data_path": "action_result.parameter.name",
+                    "data_path": "action_result.parameter.random",
                     "data_type": "string"
                 }
             ],
