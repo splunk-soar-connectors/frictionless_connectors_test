@@ -52,6 +52,16 @@
             "versions": "EQ(*)"
         },
         {
+            "action": "second action",
+            "description": "test",
+            "type": "investigate",
+            "read_only": true,
+            "identifier": "second_action",
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
             "action": "list network objects",
             "description": "List network object in FMC",
             "type": "investigate",
