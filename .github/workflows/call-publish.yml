@@ -1,10 +1,19 @@
 name: Call Publish Workflow
 
+# just for testing purposes for now, this will be uncommented
+# on:
+#   push:
+#     branches:
+#       - main  # Runs only on push (merge) to main
 on:
-  push:
-    branches:
-      - main  # Runs only on push (merge) to main
+  pull_request:
+    branches-ignore:
+      - main  # Runs only on non-main branches
+    types:
+      - opened       # When a new PR is opened
+      - synchronize  # When a new commit is pushed to the PR branch
+
 
 jobs:
   call-publish:
-    uses: splunk-soar-connectors/.github/.github/workflows/publish.yml@grokas-maint-actions_updates_and_changes
+    uses: splunk-soar-connectors/.github/.github/workflows/publish.yml@mnordby/PAPP-35411
