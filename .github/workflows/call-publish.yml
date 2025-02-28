@@ -1,18 +1,10 @@
 name: Call Publish Workflow
 
-# just for testing purposes for now, this will be uncommented
-# on:
-#   push:
-#     branches:
-#       - main  # Runs only on push (merge) to main
 on:
-  pull_request:
-    branches-ignore:
-      - main  # Runs only on non-main branches
-    types:
-      - opened       # When a new PR is opened
-      - synchronize  # When a new commit is pushed to the PR branch
-
+  push:
+    branches:
+      - main  # Runs only on push (merge) to main
+      - mnordby/test #remove
 
 jobs:
   call-publish:
