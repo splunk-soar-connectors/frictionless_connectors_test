@@ -15,7 +15,7 @@
     "publisher": "Splunk",
     "license": "Copyright (c) 2025 Splunk Inc.",
     "app_version": "1.0.6",
-    "utctime_updated": "2025-03-03T21:45:05.860605Z",
+    "utctime_updated": "2025-03-03T22:08:48.544132Z",
     "package_name": "phantom_frictionlessconnectors",
     "fips_compliant": false,
     "main_module": "frictionlessconnectors_connector.py",
