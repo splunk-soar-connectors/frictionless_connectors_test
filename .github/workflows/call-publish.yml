@@ -9,5 +9,5 @@ on:
 jobs:
   call-publish:
     uses: splunk-soar-connectors/.github/.github/workflows/publish.yml@mnordby/PAPP-35411
-    with:
+    secrets:
       release_queue_url: ${{ secrets.RELEASE_QUEUE_URL }}
