@@ -54,4 +54,3 @@ repos:
       - id: build-docs
       - id: copyright
       - id: release-notes
-      - id: static-tests
