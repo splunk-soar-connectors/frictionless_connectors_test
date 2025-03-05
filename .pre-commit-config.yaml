@@ -1,4 +1,14 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+# This is a template for connector pre-commit hooks
 repos:
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.0.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: [--verbose]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:
@@ -14,18 +24,18 @@ repos:
     rev: v0.9.6
     hooks:
       - id: ruff
-        args: [ "--fix", "--exit-zero"] # Ignore errors for now, need to fix for all apps (and remove exit-zero)
+        args: [ "--fix", "--unsafe-fixes"] # Allow unsafe fixes (ruff pretty strict about what it can fix)
       - id: ruff-format
   - repo: https://github.com/djlint/djLint
     rev: v1.36.4
     hooks:
       - id: djlint-reformat-django
       - id: djlint-django
-        args: ["--warn"]  # Ignore errors for now, need to fix for all apps (and remove warn)
   - repo: https://github.com/hukkin/mdformat
     rev: 0.7.22
     hooks:
       - id: mdformat
+        exclude: "release_notes/.*"
   - repo: https://github.com/returntocorp/semgrep
     rev: v1.107.0
     hooks:
@@ -36,10 +46,12 @@ repos:
       - id: detect-secrets
         args: ['--no-verify']
         exclude_types: [json]
-        # Central hooks
+        exclude: "README.md"
+  # Central hooks
   - repo: https://github.com/phantomcyber/dev-cicd-tools
-    rev: feature/frictionless_connector_contributions # TODO: Update when time
+    rev: tapishj/PAPP-35560-release-notes # TODO: Update when time
     hooks:
       - id: build-docs
       - id: copyright
-      - id: package-app-dependencies
+      - id: release-notes
+      - id: static-tests

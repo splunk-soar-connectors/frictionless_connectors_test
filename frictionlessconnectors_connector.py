@@ -14,7 +14,7 @@
 # and limitations under the License.
 
 import json
-from typing import Any
+from typing import Any, Optional
 
 import phantom.app as phantom
 import requests
@@ -45,7 +45,7 @@ class FP_Connector(BaseConnector):
         Instance variables
         """
         # Call the BaseConnectors init first
-        super(FP_Connector, self).__init__()
+        super().__init__()
 
         self.firepower_host = ""
         self.headers = HEADERS
@@ -142,7 +142,7 @@ class FP_Connector(BaseConnector):
             return RetVal(phantom.APP_SUCCESS, resp_json)
 
         # You should process the error returned in the json
-        message = "Error from server. Status Code: {0} Data from server: {1}".format(r.status_code, r.text.replace("{", "{{").replace("}", "}}"))
+        message = "Error from server. Status Code: {} Data from server: {}".format(r.status_code, r.text.replace("{", "{{").replace("}", "}}"))
 
         return RetVal(action_result.set_status(phantom.APP_ERROR, message), None)
 
@@ -171,7 +171,7 @@ class FP_Connector(BaseConnector):
             return self._process_empty_response(r, action_result)
 
         # everything else is actually an error at this point
-        msg = "Can't process response from server. Status Code: {0} Data from server: {1}".format(
+        msg = "Can't process response from server. Status Code: {} Data from server: {}".format(
             r.status_code, r.text.replace("{", "{{").replace("}", "}}")
         )
 
@@ -182,10 +182,10 @@ class FP_Connector(BaseConnector):
         method: str,
         endpoint: str,
         action_result: ActionResult,
-        json_body: dict[str, Any] = None,
+        json_body: Optional[dict[str, Any]] = None,
         headers_only: bool = False,
         first_try: bool = True,
-        params: dict[str, Any] = None,
+        params: Optional[dict[str, Any]] = None,
     ) -> tuple[bool, Any]:
         """Function that makes the REST call to the app.
         :param method: REST method
@@ -215,7 +215,7 @@ class FP_Connector(BaseConnector):
                 self.debug_print(f"Re-running endpoint that failed because of token error {endpoint}")
                 return self._make_rest_call(method, endpoint, action_result, json_body, headers_only, first_try=False)
 
-            message = "Error from server. Status Code: {0} Data from server: {1}".format(
+            message = "Error from server. Status Code: {} Data from server: {}".format(
                 result.status_code, result.text.replace("{", "{{").replace("}", "}}")
             )
             return action_result.set_status(phantom.APP_ERROR, message), None
@@ -240,7 +240,7 @@ class FP_Connector(BaseConnector):
         self.save_progress("Connectivity test passed")
         return action_result.set_status(phantom.APP_SUCCESS)
 
-    def get_network_objects_of_type(self, object_type: str, domain_uuid: str, action_result: ActionResult, name: str = None) -> bool:
+    def get_network_objects_of_type(self, object_type: str, domain_uuid: str, action_result: ActionResult, name: Optional[str] = None) -> bool:
         """Helper to get network objects of a particular type.
         Args:
             object_type (str): Network object type (Network, Host, Range)
@@ -298,6 +298,7 @@ class FP_Connector(BaseConnector):
             leaf_domain = domain["name"].lower().split("/")[-1]
             if domain_name.lower() == leaf_domain:
                 return domain["uuid"]
+        return None
 
     def _handle_list_network_objects(self, param: dict[str, Any]) -> bool:
         self.save_progress(f"In action handler for: {self.get_action_identifier()}")
@@ -343,18 +344,15 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 2:
-        print("No test json specified as input")
         sys.exit(0)
 
     # input a json file that contains data like the configuration and action parameters
     with open(sys.argv[1]) as f:
         in_json = f.read()
         in_json = json.loads(in_json)
-        print(json.dumps(in_json, indent=4))
 
         connector = FP_Connector()
         connector.print_progress_message = True
         ret_val = connector._handle_action(json.dumps(in_json), None)
-        print(json.dumps(json.loads(ret_val), indent=4))
 
     sys.exit(0)
