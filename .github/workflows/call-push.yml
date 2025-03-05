@@ -2,12 +2,10 @@ name: Call Push Workflow
 
 on:
   pull_request:
-    branches-ignore:
-      - main  # Runs only on non-main branches
     types:
       - opened       # When a new PR is opened
       - synchronize  # When a new commit is pushed to the PR branch
 
 jobs:
   call-push:
-    uses: splunk-soar-connectors/.github/.github/workflows/push.yml@main
+    uses: splunk-soar-connectors/.github/.github/workflows/push.yml@PAPP-35419-next_removal
