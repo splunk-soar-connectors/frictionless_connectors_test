@@ -14,8 +14,8 @@
     "product_version_regex": ".*",
     "publisher": "Splunk",
     "license": "Copyright (c) 2025 Splunk Inc.",
-    "app_version": "1.0.6",
-    "utctime_updated": "2025-01-17T22:32:42.000000Z",
+    "app_version": "1.0.7",
+    "utctime_updated": "2025-03-11T21:48:12.000000Z",
     "package_name": "phantom_frictionlessconnectors",
     "fips_compliant": false,
     "main_module": "frictionlessconnectors_connector.py",
@@ -36,7 +36,7 @@
                 "APJ",
                 "AUS",
                 "IN"
-             ],
+            ],
             "order": 1
         }
     },
@@ -57,7 +57,7 @@
             "type": "investigate",
             "read_only": true,
             "identifier": "list_network_objects",
-            "parameters":{
+            "parameters": {
                 "name": {
                     "description": "Network object name to filter results by",
                     "data_type": "string",
@@ -67,10 +67,10 @@
                     "description": "Network object type to filter results by",
                     "data_type": "string",
                     "value_list": [
-                       "Host",
-                       "Network",
-                       "Range",
-                       "FQDN"
+                        "Host",
+                        "Network",
+                        "Range",
+                        "FQDN"
                     ],
                     "order": 1
                 },
