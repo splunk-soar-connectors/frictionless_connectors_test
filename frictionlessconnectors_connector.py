@@ -323,6 +323,14 @@ class FP_Connector(BaseConnector):
         self.save_progress("test")
         return action_result.set_status(phantom.APP_SUCCESS)
 
+    def _handle_test_action(self, param: dict[str, Any]) -> bool:
+        action_result = ActionResult(dict(param))
+        self.add_action_result(action_result)
+
+        self.save_progress("Test action")
+        return action_result.set_status(phantom.APP_SUCCESS)
+        
+    
     def handle_action(self, param: dict[str, Any]) -> bool:
         ret_val = phantom.APP_SUCCESS
 
@@ -335,6 +343,8 @@ class FP_Connector(BaseConnector):
             ret_val = self._handle_test_connectivity(param)
         elif action_id == "list_network_objects":
             self._handle_list_network_objects(param)
+        elif action_id == "test_action":
+            self._handle_test_action(param)
 
         return ret_val
 
