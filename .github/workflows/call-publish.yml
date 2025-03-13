@@ -1,11 +1,12 @@
 name: Call Publish Workflow
 
 on:
-  push:
-    branches:
-      - main  # Runs only on push (merge) to main
-      - mnordby/newtest
-
+  pull_request:
+    branches-ignore:
+      - main  # Runs only on non-main branches
+    types:
+      - opened       # When a new PR is opened
+      - synchronize  # When a new commit is pushed to the PR branch
 jobs:
   call-publish:
     uses: splunk-soar-connectors/.github/.github/workflows/publish.yml@mnordby/purge-unreleased-notes
