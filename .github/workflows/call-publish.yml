@@ -1,10 +1,10 @@
 name: Call Publish Workflow
 
 on:
-  push:
+  pull_request:
     branches:
       - main  # Runs only on push (merge) to main
 
 jobs:
   call-publish:
-    uses: splunk-soar-connectors/.github/.github/workflows/publish.yml@grokas-maint-actions_updates_and_changes
+    uses: splunk-soar-connectors/.github/.github/workflows/publish.yml@tapishj/PAPP-35446
