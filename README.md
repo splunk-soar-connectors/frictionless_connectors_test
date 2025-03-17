@@ -20,6 +20,7 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 ### Supported Actions
 
 [test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration \
+[test action](#action-test-action) - Test action \
 [list network objects](#action-list-network-objects) - List network object in FMC
 
 ## action: 'test connectivity'
@@ -36,6 +37,26 @@ No parameters are required for this action
 #### Action Output
 
 No Output
+
+## action: 'test action'
+
+Test action
+
+Type: **test** \
+Read only: **True**
+
+#### Action Parameters
+
+No parameters are required for this action
+
+#### Action Output
+
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.message | string | | |
+summary.total_objects_successful | numeric | | |
+summary.total_objects | numeric | | |
+action_result.status | string | | |
 
 ## action: 'list network objects'
 
