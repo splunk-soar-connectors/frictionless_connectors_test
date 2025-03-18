@@ -1,7 +1,7 @@
 # Frictionless Connectors Test
 
 Publisher: Splunk \
-Connector Version: 1.0.6 \
+Connector Version: 1.0.7 \
 Product Vendor: Splunk \
 Product Name: Frictionless Connectors Test \
 Minimum Product Version: 6.3.0
