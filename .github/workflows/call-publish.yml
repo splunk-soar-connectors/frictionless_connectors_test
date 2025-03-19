@@ -7,4 +7,4 @@ on:
 
 jobs:
   call-publish:
-    uses: splunk-soar-connectors/.github/.github/workflows/publish.yml@grokas-maint-actions_updates_and_changes
+    uses: splunk-soar-connectors/.github/.github/workflows/publish.yml@tapishj/PAPP-35446
