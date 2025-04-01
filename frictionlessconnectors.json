@@ -17,7 +17,7 @@
     "app_version": "1.0.7",
     "utctime_updated": "2025-03-11T21:48:12.000000Z",
     "package_name": "phantom_frictionlessconnectors",
-    "fips_compliant": false,
+    "fips_compliant": true,
     "main_module": "frictionlessconnectors_connector.py",
     "min_phantom_version": "6.3.0",
     "app_wizard_version": "1.0.1",
