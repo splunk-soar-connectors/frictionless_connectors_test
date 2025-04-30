@@ -59,7 +59,7 @@
             "identifier": "list_network_objects",
             "parameters": {
                 "name": {
-                    "description": "Network object name to filter results by",
+                    "description": "Network objects name to filter results by",
                     "data_type": "string",
                     "order": 0
                 },
