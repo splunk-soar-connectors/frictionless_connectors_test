@@ -52,6 +52,16 @@
             "versions": "EQ(*)"
         },
         {
+            "action": "test action",
+            "identifier": "test_action",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
             "action": "list network objects",
             "description": "List network object in FMC",
             "type": "investigate",
