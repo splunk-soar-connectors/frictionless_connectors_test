@@ -8,4 +8,4 @@ on:
 
 jobs:
   call-push:
-    uses: splunk-soar-connectors/.github/.github/workflows/push.yml@tapishj/maint-security-scans
+    uses: splunk-soar-connectors/.github/.github/workflows/push.yml@tapishj/PAPP-36384-better-AB-support
