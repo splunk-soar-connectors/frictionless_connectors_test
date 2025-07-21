@@ -7,7 +7,7 @@
     "logo": "logo_cisco.svg",
     "logo_dark": "logo_cisco_dark.svg",
     "product_name": "Frictionless Connectors Test",
-    "python_version": "3",
+    "python_version": ["3.9", "3.13"],
     "latest_tested_versions": [
         "Cloud, October 30, 2024"
     ],
